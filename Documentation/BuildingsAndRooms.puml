@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+class Building
+class Room
+
+Main : Building nettoBuilding
+Main : ArrayList<Room> nettosRooms
+Main : Building cphBuilding
+Main : {static} +int countLambsInBuilding(Building building)
+Main : {static} +boolean isNormal(Building building)
+
+Building : -ArrayList<Room> rooms
+Building : -byte numberOfBathrooms
+Building : -byte numberOfFloors
+Building : -boolean isOfficeBuilding
+Building : +Building(byte bathrooms, byte floors, boolean isOffice)
+Building : +Building(int bathrooms, int floors, boolean isOffice)
+Building : +ArrayList<Room> getRooms()
+Building : +byte getNumberOfBathrooms()
+Building : +byte getNumberOfFloors()
+Building : +boolean isOfficeBuilding()
+
+Room : -byte numberOfDoors
+Room : -byte numberOfLambs
+Room : -byte numberOfWindows
+Room : +Room(byte doors, byte lambs, byte windows)
+Room : +Room(int doors, int lambs, int windows)
+Room : +byte getNumberOfDoors()
+Room : +byte getNumberOfLambs()
+Room : +byte getNumberOfWindows()
+
+Main::countLambsInBuilding --> Building
+Main::countLambsInBuilding --> Room
+Main::isNormal --> Building
+Main::isNormal --> Room
+
+Building::rooms -> Room
+Main::nettosRooms -> Room
+Main::nettoBuilding --> Building
+Main::cphBuilding --> Building
+
+
+@enduml
